@@ -4,7 +4,7 @@ This lab focuses on **linear classification** of 2D points. The goal is to class
 
 # Repository Contents
 - `main.py` – Python script to classify points based on a line.
-- `unlabelled_data.csv` – Input data file with points to classify.
+- `unlabelled_data.csv` – Input data file with points to classify.# rainbowcsv extension
 - `labelled_data.csv` – Output file with an added column: 0 if a point is to the left/below the line, 1 otherwise.
 - `report.ipynb` *(optional, for VG)* – Short report analyzing multiple lines and comparing their classification performance.
 - `README.md` – This file.
