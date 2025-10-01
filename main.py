@@ -29,23 +29,70 @@ for row in csv_reader:
     
 x_data=np.array(x_data)
 y_data=np.array(y_data)
-#plot 
-plt.scatter(x_data, y_data)
 
-plt.title("plt for datas")
-plt.xlabel("colum(0)")
-plt.ylabel("colun(1)")
-plt.show()
-    
 
-    
     
 
 
+def y_line(x, slope, intercept):
+    return slope * x + intercept
 
 
 
+#splli the line    
+def calculate_split_line(x_data,y_data):
+    slope=-1
+    intercept=np.median(x_data+ y_data)
+    x_values= np.array([np.min(x_data),np.max(x_data)])
+    y=y_line(slope , x_values ,intercept)
+    
+    return x_values, y,intercept, slope
 
 
 
+x_values,y,intercept,slope=calculate_split_line(x_data,y_data)
+
+
+
+y_line_values = y_line(x_data, slope, intercept)
+
+
+def list_point(x_data,y_data,intercept):
+    
+    y=y_line(x_data,slope ,intercept)
+    
+    above_list=[(x_data[i],y_data[i])for i in range(len(x_data)) if y_data[i]< y[i] ]
+    under_list=[(x_data[i],y_data[i]) for i in range(len(x_data)) if y_data[i] > y[i]]
+    
+    return np.array(above_list), np.array(under_list)
+
+
+
+# Create CSV file with points above and below the line
+def create_csv(above_list, below_list):
+    with open("labelled_data.csv", "w") as f:
+        for point in above_list:
+            f.write(f"{point[0]},{point[1]},1\n") # 1 for above the line
+        for point in below_list:
+            f.write(f"{point[0]},{point[1]},0\n") # 0 for below the line
+
+
+# Plot data points
+def plot_data(above_list, below_list, x_values, y):
+
+    # plot poits above the line
+    plt.scatter(above_list[:, 0], above_list[:, 1], s=10, color="blue", label=f"{len(above_list)} Points Above Line")
+
+    # plot points below the line
+    plt.scatter(below_list[:, 0], below_list[:, 1], s=10, color="yellow", label=f"{len(below_list)} Points Below Line")
+
+    plt.plot(x_values, y, color="r", linewidth=2)
+
+    plt.xlabel("X-axis")
+    plt.ylabel("Y-axis")
+    plt.title(f"Data Points")
+    plt.legend()
+    plt.show()
+
+    
     
