@@ -74,10 +74,9 @@ print("Above:", above[:5])  # show first 5
 print("Below:", below[:5])
 
 
-# make a plot
 
 
-    
+#write file   
 def Csv_file(above_list,under_list):
     with open ("labelled_data.csv" ,"w") as file:
         for dot in above_list:
@@ -87,6 +86,8 @@ def Csv_file(above_list,under_list):
             
 # Plot data dotss
 def plot_data(above_list, under_list, x_values, y):
+
+
 
     # plot dotss above the line
     plt.scatter(above_list[:, 0], above_list[:, 1], s=10, color="blue", label=f"{len(above_list)} Points Above Line")
