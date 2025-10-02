@@ -48,6 +48,7 @@ def calculate_split_line(x_data,y_data):
     
     return x_values, y,intercept, slope
 
+   
 
 
 x_values,y,intercept,slope=calculate_split_line(x_data,y_data)
@@ -80,9 +81,9 @@ print("Below:", below[:5])
 def Csv_file(above_list,under_list):
     with open ("labelled_data.csv" ,"w") as file:
         for dot in above_list:
-            file.write(f"{dot[0]},{dot[1]}")
+            file.write(f"{dot[0]},{dot[1]},1\n")
         for dot in under_list:
-            file.write(f"{dot[0]},{dot[1]}")
+            file.write(f"{dot[0]},{dot[1]},0\n")
             
 # Plot data dotss
 def plot_data(above_list, under_list, x_values, y):
