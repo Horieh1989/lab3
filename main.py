@@ -2,7 +2,7 @@ import urllib.request
 import matplotlib.pyplot as plt
 import numpy as np
 import csv
-import os
+import sys,os #use gor cathing file
 
 data_url="https://raw.githubusercontent.com/Horieh1989/lab3/refs/heads/master/Datas/unlabelled_data.csv"
 
